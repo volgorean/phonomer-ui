@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Hind+Vadodara:300,400,500,600,700');
+
 * {
   position: relative;
   margin: 0;
@@ -11,7 +13,7 @@ html, body {
   width: 100%;
   height: 100vh;
   overflow-x: hidden;
-  background: lightgray;
+  background: #E7E8F2;
 }
 /* flex item */
 .flexi-i {
@@ -32,9 +34,12 @@ html, body {
 .rr {
   flex-direction: row-reverse;
 }
-.middle {
-  width: 1260px;
+.middle, .content {
+  width: 1480px;
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 10px;
+}
+.content {
+  width: 1020px;
+  padding: 0 40px;
 }
