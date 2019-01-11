@@ -1,6 +1,7 @@
 <template>
   <div id="domains">
     <siteNav :background="true"></siteNav>
+    <currentSearch></currentSearch>
 
     <div class="domain-list content">
       <div class="domain" v-for="d in domains">
@@ -54,6 +55,7 @@
           color: #d2d2d2;
         }
         .star {
+          height: 26px;
           flex: 0 0 26px;
           cursor: pointer;
 
@@ -82,10 +84,11 @@
 
 <script>
   import siteNav from "./nav.vue"
+  import currentSearch from "./current-search.vue"
 
   export default {
     components: {
-      siteNav
+      siteNav, currentSearch
     },
     data () {
       return {
