@@ -4,55 +4,19 @@
       <h1 class="search-title">Custom Search</h1>
       <p class="search-subtitle">Aliquam aliquam massa sit amet sapien scelerisque posuere. Suspendisse potenti. Praesent condimentum ipsum eget odio iaculis, vel suscipit nisi sagittis. Curabitur maximus accumsan molestie.....</p>
 
+      <h2 class="search-options-title">Domains</h2>
       <div class="search-options">
-        <div class="search-option">
-          <p>.com</p>
+        <div class="search-option" v-for="t in tlds">
+          <p>{{t}}</p>
         </div>
-        <div class="search-option">
-          <p>.co</p>
-        </div>
-        <div class="search-option">
-          <p>.net</p>
-        </div>
-        <div class="search-option">
-          <p>.io</p>
-        </div>
-        <div class="search-option">
-          <p>.co.uk</p>
-        </div>
-        <div class="search-option">
-          <p>Reddit</p>
-        </div>
-        <div class="search-option">
-          <p>Twitter</p>
-        </div>
+      </div>
 
-        <div class="search-option">
-          <p>AngelList</p>
-        </div>
+      <br>
 
-        <div class="search-option">
-          <p>Github</p>
-        </div>
-
-        <div class="search-option">
-          <p>Quora</p>
-        </div>
-
-        <div class="search-option">
-          <p>Telegram</p>
-        </div>
-
-        <div class="search-option">
-          <p>Paypal</p>
-        </div>
-
-        <div class="search-option">
-          <p>Behance</p>
-        </div>
-
-        <div class="search-option">
-          <p>Etsy</p>
+      <h2 class="search-options-title">Usernames</h2>
+      <div class="search-options">
+        <div class="search-option" v-for="s in social">
+          <p>{{s}}</p>
         </div>
       </div>
     </div>
@@ -62,7 +26,7 @@
 <style lang="scss" scoped>
   #search {
     width: 100%;
-    padding: 80px 0;
+    padding: 60px 0;
     background: #833471;
 
     .search-title {
@@ -75,6 +39,11 @@
       font: 300 18px/24px 'Hind Vadodara', sans-serif;
       color: #c9c8c8;
     }
+    .search-options-title {
+      padding-bottom: 10px;
+      font: 300 22px/22px 'Hind Vadodara', sans-serif;
+      color: white;
+    }
     .search-options {
       display: grid;
       grid-column-gap: 10px;
@@ -86,17 +55,20 @@
         padding: 10px;
         background: #6F1E51;
         text-align: center;
+        font: 500 16px/16px 'Hind Vadodara', sans-serif;
+        color: white;
       }
     }
   }
 </style>
-
 
 <script>
   export default {
     props: [],
     data () {
       return {
+        tlds: [".com", ".co", ".net", ".org", ".us", ".co.uk", ".eu", ".ca", ".it", ".in", ".me", ".tv", ".io", ".ai"],
+        social: ["Reddit", "Twitter", "AngelList", "Github", "Quora", "Telegram", "Paypal", "Behance", "Etsy"],
       }
     },
   }
