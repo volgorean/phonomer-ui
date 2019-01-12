@@ -11,7 +11,7 @@ export default new Router({
   mode: 'history',
   routes: [
     { path: '/', component: index },
-    { path: '/generate/:preset', component: generate },
+    { path: '/generate/:id', component: generate },
     { path: '*', redirect: '/' }
   ]
 })

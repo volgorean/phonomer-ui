@@ -1,7 +1,7 @@
 <template>
   <div id="domains">
     <siteNav :background="true"></siteNav>
-    <currentSearch></currentSearch>
+    <currentSearch :search="search" @select="s=> tlds=s"></currentSearch>
 
     <div class="domain-list content">
       <div class="domain" v-for="d in domains">
@@ -14,15 +14,8 @@
           <img class="star" src="~images/star.svg" :class="{active: d.starred}" @click="d.starred=!d.starred">
         </div>
 
-        <p class="domain-tlds">
-          <span class="domain-tld">✓ .com</span>
-          <span class="domain-tld">✓ .co</span>
-          <span class="domain-tld">✓ .io</span>
-          <span class="domain-tld">✓ .de</span>
-          <span class="domain-tld">✓ .co.uk</span>
-          <span class="domain-tld">✓ .tv</span>
-          <span class="domain-tld">✓ Reddit</span>
-          <span class="domain-tld">✓ Twitter</span>
+        <p class="domain-tlds" v-if="tlds.length > 0">
+          <span class="domain-tld" v-for="t in tlds">✓ {{t.name}}</span>
         </p>
       </div>
     </div>
@@ -70,6 +63,7 @@
           .domain-tld {
             display: inline-block;
             margin-top: 2px;
+            margin-right: 2px;
             padding: 2px 4px;
             border-radius: 3px;
             border: 1px solid white;
@@ -85,6 +79,7 @@
 <script>
   import siteNav from "./nav.vue"
   import currentSearch from "./current-search.vue"
+  import searches from "./searches.js"
 
   export default {
     components: {
@@ -92,27 +87,44 @@
     },
     data () {
       return {
-        domains: []
+        search: false,
+        domains: [],
+        tlds: [],
+      }
+    },
+    methods: {
+      getSearch: function() {
+        let id = this.$route.params.id
+        let s = searches[id]        
+
+        // if (id == "custom") {
+
+        // }
+        if (s) {
+          this.$data.search = s
+          this.getWords(s.key)
+        }
+      },
+      getWords: function(id) {
+        fetch("http://localhost:3000/generate/"+id)
+        .then(res => res.json())
+        .then(data=> {
+          data.results.forEach(r=> {
+            this.$data.domains.push({
+              domain: r.word,
+              parts: r.parts,
+              available: false,
+              starred: false,
+            })
+          })
+        })
+        .catch(err=> {
+          console.log(err)
+        })
       }
     },
     mounted() {
-      fetch("http://localhost:3000/generate/english")
-      .then(res => res.json())
-      .then(data=> {
-        console.log(data)
-
-        data.results.forEach(r=> {
-          this.$data.domains.push({
-            domain: r.word+".com",
-            parts: r.parts,
-            available: false,
-            starred: false,
-          })
-        })
-      })
-      .catch(err=> {
-        console.log(err)
-      })
+      this.getSearch()
     }
   }
 </script>
