@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <form class="search-custom" @submit.prevent>
+    <form class="search-custom" @submit.prevent="submit">
       <div class="content flexi-c">
         <div class="search-custom-header flexi-c r">
           <p class="search-custom-title flexi-i">Custom Search</p>
@@ -221,14 +221,56 @@
     components: {
       siteNav
     },
+    data () {
+      return {
+        custom: ""
+      }
+    },
     computed: {
       words: function() {
         return this.$data.custom.split(/\r\n+|\n+|\r+|\s+|,+|\.+/).filter(e => e)
       }
     },
-    data () {
-      return {
-        custom: ""
+    methods: {
+      submit: function() {
+        fetch("http://localhost:3000/generate/"+id, {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },          
+        })
+        .then(res => res.json())
+        .then(data=> {
+          data.results.forEach(r=> {
+            this.$data.domains.push({
+              domain: r.word,
+              parts: r.parts,
+              available: false,
+              starred: false,
+            })
+          })
+        })
+        .catch(err=> {
+          console.log(err)
+        })
+
+
+
+        this.$s.setSearch(
+          "custom-"+Math.random().toString(36).slice(2),
+          {
+            key: "custom",
+            name: "Custom",
+            description: this.words.join(", ").slice(0, 280)
+          }
+        )
+
+        english: {
+          key: "english",
+          name: "English",
+          description: "Word generator General english word list of more than 300k english words to generate english sounding fake words.",
+        },
       }
     },
   }

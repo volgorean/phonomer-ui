@@ -2,7 +2,7 @@
   <div id="search">
     <div class="content">
       <h1 class="search-title">{{search.name}} Search</h1>
-      <p class="search-subtitle">{{search.description}}</p>
+      <p class="search-subtitle" v-else>{{search.description}}</p>
 
       <h2 class="search-options-title">Domains</h2>
       <div class="search-options">
