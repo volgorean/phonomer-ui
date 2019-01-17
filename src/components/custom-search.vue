@@ -8,7 +8,7 @@
 	    	</div>
 	    </div>
 
-	    <div class="search-custom-input content">
+	    <div class="search-custom-input content flexi-c">
 	    	<div class="search-custom-input-inner">
 	    	  <p class="search-custom-input-placeholder" v-if="custom.length==0">
 	    	    Enter at least 100 words from which to generate.<br>
@@ -71,9 +71,10 @@
 	    width: 100%;
 	    min-height: 300px;
 
+
 	    .search-custom-input-inner {
+        flex: 1 1;
 	    	width: 100%;
-	    	height: 100%;
 	    }
 
 	    .search-custom-input-placeholder {
@@ -84,12 +85,14 @@
 	      font: 500 14px/18px 'Hind Vadodara', sans-serif;
 	    }
 	    textarea {
+        position: absolute;
 	      width: 100%;
 	      height: 100%;
 	      padding-top: 20px;
 	      border: none;
 	      background: transparent;
 	      font: 500 14px/18px 'Hind Vadodara', sans-serif;
+        outline: none;
 	      resize: none;
 	    }
 	  }
