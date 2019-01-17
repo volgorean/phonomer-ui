@@ -63,26 +63,26 @@
 
       .bg-bars {
         position: absolute;
-        top: 20%;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        transform: rotate(-75deg);
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        transform: skewX(-15deg);
 
         .bg-bar-1, .bg-bar-2, .bg-bar-3 {
           position: absolute;
           top: 0;
-          left: 0;
-          width: 100%;
+          right: 0;
+          width: 36%;
           height: 100%;
           opacity: 0.15;
-          background: linear-gradient(-90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0) 100%);
+          background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
         }
         .bg-bar-2 {
-          top: 20%;
+          right: 12%;
         }
         .bg-bar-3 {
-          top: 40%;
+          right: 24%;
         }
       }
 
