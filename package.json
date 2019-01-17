@@ -10,7 +10,6 @@
   "dependencies": {
     "uglifyjs-webpack-plugin": "^1.2.4",
     "vue": "^2.5.11",
-    "vuex": "^3.0.1",
     "vue-router": "^3.0.1"
   },
   "browserslist": [

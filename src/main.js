@@ -9,7 +9,6 @@ Vue.prototype.$d = store.state
 
 window.$vivi = new Vue({
   el: '#app',
-  store,
   router,
   render: h => h(App)
 })
