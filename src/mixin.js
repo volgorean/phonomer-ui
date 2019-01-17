@@ -13,7 +13,7 @@ Vue.mixin({
       if (body) {
         options.body = JSON.stringify(body)
       }
-      return fetch(this.$api+endpoint, options)
+      return fetch(process.env.API_HOST+endpoint, options)
         .then(async response => {
           return {
             ok: response.ok,

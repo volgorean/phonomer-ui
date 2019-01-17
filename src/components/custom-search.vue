@@ -122,11 +122,7 @@
       		return
       	}
 
-        fetch(`${process.env.API_HOST}/generate/`, {
-          method: "POST",
-          body: JSON.stringify({words: this.words}),
-        })
-        .then(res => res.json())
+        this.fetchApi("POST", "/generate/", {words: this.words})
         .then(data=> {
           this.$router.push("/generate/"+data.id)
         })

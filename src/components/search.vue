@@ -37,8 +37,7 @@
     },
     methods: {
       getSearch: function() {
-        fetch(`${process.env.API_HOST}/generate/${this.$route.params.id}`)
-        .then(res => res.json())
+        this.fetchApi("GET", "/generate/"+this.$route.params.id)
         .then(data=> {
           this.$data.search = {
             name: data.name,
