@@ -21,26 +21,26 @@
           <div class="flexi-i">
             <div class="search-row">
               <a href="/generate/latin" class="search-link"><span class="unskew">Latin</span></a>
-              <a href="/generate/greek" class="search-link"><span class="unskew">Greek</span></a>
+              <a href="/generate/spanish" class="search-link"><span class="unskew">Spanish</span></a>
               <a href="/generate/german" class="search-link"><span class="unskew">German</span></a>
             </div>
 
             <div class="search-row">
               <a href="/generate/english" class="search-link"><span class="unskew">English</span></a>
               <a href="/generate/french" class="search-link"><span class="unskew">French</span></a>
-              <a href="/generate/slavic" class="search-link"><span class="unskew">Slavic</span></a>
-              <a href="/generate/scandinavian" class="search-link"><span class="unskew">Scandinavian</span></a>
+              <a href="/generate/russian" class="search-link"><span class="unskew">Russian</span></a>
+              <a href="/generate/norwegian" class="search-link"><span class="unskew">Norwegian</span></a>
             </div>
 
             <div class="search-row">
               <a href="/generate/japanese" class="search-link"><span class="unskew">Japanese</span></a>
-              <a href="/generate/fantasy" class="search-link"><span class="unskew">Fantasy</span></a>
-              <a href="/generate/scifi" class="search-link"><span class="unskew">Sci-Fi</span></a>
+              <a href="/generate/vietnamese" class="search-link"><span class="unskew">Vietnamese</span></a>
+              <a href="/generate/arabic" class="search-link"><span class="unskew">Arabic</span></a>
             </div>
 
             <div class="search-row">
-              <a href="/generate/artsy" class="search-link"><span class="unskew">Artsy</span></a>
-              <a href="/generate/slang" class="search-link"><span class="unskew">Slang</span></a>
+              <a href="/generate/fantasy" class="search-link"><span class="unskew">Fantasy</span></a>
+              <a href="/generate/scifi" class="search-link"><span class="unskew">Sci-Fi</span></a>
               <a href="/generate/science" class="search-link"><span class="unskew">Science</span></a>
             </div>
           </div>
