@@ -37,7 +37,7 @@
     },
     methods: {
       getSearch: function() {
-        fetch("http://localhost:3000/generate/"+this.$route.params.id)
+        fetch(`${process.env.API_HOST}/generate/${this.$route.params.id}`)
         .then(res => res.json())
         .then(data=> {
           this.$data.search = {

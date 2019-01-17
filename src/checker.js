@@ -25,7 +25,7 @@ var sources = {
 	},
 	default(word, kind) {
 		return new Promise((resolve, reject) => {
-			fetch(`http://localhost:3000/available/${kind}/${word}`)
+			fetch(`${process.env.API_HOST}/available/${kind}/${word}`)
 			.then(res => res.json())
 			.then(data=> {
 			  resolve(data.available)

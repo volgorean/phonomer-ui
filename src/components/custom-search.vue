@@ -119,7 +119,7 @@
       		return
       	}
 
-        fetch("http://localhost:3000/generate/", {
+        fetch(`${process.env.API_HOST}/generate/`, {
           method: "POST",
           body: JSON.stringify({words: this.words}),
         })

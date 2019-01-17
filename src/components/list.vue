@@ -124,7 +124,8 @@
     		return ["com", "co", "net", "org", "us", "couk", "ca", "it", "in", "me", "tv", "sh", "io", "ai"].includes(tld)
     	},
     	affiliateLink: function(w, tld) {
-    		return "https://www.namecheap.com/domains/registration/results.aspx?domain="+w.word+tld.name
+    		// https://www.namecheap.com/domains/registration/results.aspx?domain=test.com
+    		return "http://www.tkqlhce.com/fh77kjspjr6FGEFGCC688B9DCBC/domains/registration/results.aspx?domain="+w.word+tld.name
     	},
       checkTlds: function() {
         this.words.forEach(w=> {

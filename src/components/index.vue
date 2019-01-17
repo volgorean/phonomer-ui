@@ -13,7 +13,7 @@
         <div class="content flexi-c r">
           <div class="flexi-i">
             <div class="search-left">
-              <h1 class="search-title">Markov Name Generator</h1>
+              <h1 class="search-title">Name Generator</h1>
               <p class="search-subtitle">Generate pronounceable names and check domain availability instantly</p>
             </div>
           </div>
@@ -22,7 +22,7 @@
             <div class="search-row">
               <a href="/generate/latin" class="search-link"><span class="unskew">Latin</span></a>
               <a href="/generate/greek" class="search-link"><span class="unskew">Greek</span></a>
-              <a href="/generate/german" class="search-link"><span class="unskew">Germanic</span></a>
+              <a href="/generate/german" class="search-link"><span class="unskew">German</span></a>
             </div>
 
             <div class="search-row">

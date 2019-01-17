@@ -1,8 +1,7 @@
 <template>
 	<nav :class="{'nav-bg': background}">
 		<div class="flexi-c r content">
-			<a href="/" id="logo">Markov_Name</a>
-			<!-- <a href="https://zakali.co" id="author">by Zakali.co</a> -->
+			<a href="/" id="logo">PHŌNOMER</a>
       <a href="/saved" id="saved" class="flexi-c r">
         <span>{{ state.saved.length }}</span>
         <img class="star" src="~images/star.svg">
@@ -21,13 +20,6 @@
   		margin-right: 20px;
   		font: 700 28px/40px 'Hind Vadodara', sans-serif;
       color: white
-  	}
-  	#author {
-  		flex: 0 0;
-  		margin-left: auto;
-  		font: 500 14px/40px 'Hind Vadodara', sans-serif;
-  		white-space: nowrap;
-  		color: white;
   	}
     #saved {
       height: 30px;

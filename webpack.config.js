@@ -97,6 +97,7 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"',
+        API_HOST: '"https://api.phonomer.com"',
       }
     }),
     new UglifyJSPlugin({
@@ -112,6 +113,7 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"development"',
+        API_HOST: '"http://localhost:3000"',
       }
     }),
   ])
