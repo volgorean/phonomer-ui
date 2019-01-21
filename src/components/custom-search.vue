@@ -118,6 +118,11 @@
     },
     methods: {
       customSearch: function() {
+        if (this.words.length > 0) {
+          this.$router.push("/search/?search="+this.words.join)
+        }
+      },
+      customGenerator: function() {
       	if (this.words.length < 100) {
       		return
       	}

@@ -37,7 +37,7 @@
     },
     methods: {
       getSearch: function() {
-        this.fetchApi("GET", "/search/?search="+this.$route.query.search)
+        this.fetchApi("GET", "/generate/"+this.$route.params.id)
         .then(data=> {
           this.$data.search = {
             name: data.name,

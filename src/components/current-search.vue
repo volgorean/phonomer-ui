@@ -1,7 +1,7 @@
 <template>
   <div id="search">
     <div class="content">
-      <h1 class="search-title" v-if="search.name">{{search.name}} Search</h1>
+      <h1 class="search-title" v-if="search.name">{{search.name}}</h1>
       <p class="search-subtitle" v-if="search.description">{{search.description}}</p>
 
       <h2 class="search-options-title">Domains</h2>
