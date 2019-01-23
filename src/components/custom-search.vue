@@ -3,15 +3,36 @@
 	  <div class="search-custom-form content flexi-c">
 	    <div class="search-custom-header">
 	    	<div class="content flexi-c r">
-	    		<p class="search-custom-title flexi-i">Custom Search</p>
-	    		<p class="search-custom-submit" :style="buttonStyle" @click="customSearch">{{words.length}} / 100 Required</p>
+          <div class="custom-search-type">
+            <select v-model="type" @change="input=''">
+              <option value="search">Custom Search</option>
+              <option value="generate">Custom Generator</option>
+            </select>
+          </div>
+
+          <div class="custom-search-preset" v-if="type=='search'">
+            <select v-model="preset">
+              <option value="english">English</option>
+              <option value="latin">Latin</option>
+              <option value="japanese">Japanese</option>
+              <option value="german">German</option>
+            </select>
+          </div>
+
+          <p class="search-custom-submit" :style="buttonStyle" @click="customGenerator" v-if="type=='generate'">{{words.length}} / 100 Required</p>
+          <p class="search-custom-submit" @click="customSearch" v-else>Submit</p>
 	    	</div>
 	    </div>
 
 	    <div class="search-custom-input content flexi-c">
 	    	<div class="search-custom-input-inner">
-	    	  <p class="search-custom-input-placeholder" v-if="custom.length==0">
-	    	    Enter at least 100 words from which to generate.<br>
+	    	  <p class="search-custom-input-placeholder" v-if="input.length==0">
+            <template v-if="type=='search'">
+            Enter some base words to start your search.<br>
+            </template>
+            <template v-else>
+            Enter at least 100 words from which to generate.<br>
+            </template>
 	    	    Words can be seperated by a newline, comma, or period character.<br>
 	    	    <br>
 	    	    Example:<br>
@@ -20,7 +41,7 @@
 	    	    Alpha<br>
 	    	    Manager<br>
 	    	  </p>
-	    	  <textarea v-model="custom"></textarea>
+	    	  <textarea v-model="input"></textarea>
 	    	</div>
 	    </div>
 	  </div>
@@ -47,13 +68,32 @@
 	    padding: 15px 0;
 	    background: white;
 
-	    .search-custom-title {
-	      padding: 6px 0;
-	      font: 500 24px/28px 'Hind Vadodara', sans-serif;
-	      white-space: nowrap;
-	    }
+      select {
+        width: 100%;
+        border: none;
+        background: transparent;
+        white-space: nowrap;
+      }
+
+      .custom-search-type {
+        flex: 0 0 auto;
+
+        select {
+          // padding: 6px 0;
+          font: 500 24px/28px 'Hind Vadodara', sans-serif;
+        }
+      }
+      .custom-search-preset {
+        flex: 0 0 auto;
+        
+        select {
+          padding-left: 20px;
+          font: 500 24px/28px 'Hind Vadodara', sans-serif;
+        }
+      }
 	    .search-custom-submit {
 	      flex: 0 0;
+        margin-left: auto;
 	      padding: 6px 20px;
 	      border-radius: 3px;
 	      font: 500 16px/28px 'Hind Vadodara', sans-serif;
@@ -103,23 +143,31 @@
   export default {
     data () {
       return {
-        custom: ""
+        type: "search",
+        preset: "english",
+        input: "",
       }
     },
     computed: {
       words: function() {
-        return this.$data.custom.split(/\r\n+|\n+|\r+|\s+|,+|\.+/).filter(e => e)
+        return this.$data.input.split(/\r\n+|\n+|\r+|\s+|,+|\.+/).filter(e => e)
       },
       buttonStyle: function() {
+        let [r, g, b] = this.rgbTransition(
+          236, 240, 241,
+          46, 204, 113,
+          Math.min(this.words.length/100, 1)
+        )
+
       	return {
-      		background: `rgba(46, 204, 113, ${this.words.length/100})`,
+      		background: `rgb(${r}, ${g}, ${b})`,
       	}
       }
     },
     methods: {
       customSearch: function() {
         if (this.words.length > 0) {
-          this.$router.push("/search/?search="+this.words.join)
+          this.$router.push(`/generate/${this.$data.preset}/?search=${this.words.join(",")}`)
         }
       },
       customGenerator: function() {
@@ -135,6 +183,16 @@
           console.log(err)
         })
       },
+      rgbTransition: function(fromR, fromG, fromB, toR, toG, toB, percent) {
+        let rDelta = fromR - toR
+        let gDelta = fromG - toG
+        let bDelta = fromB - toB
+        return [
+          (fromR-(rDelta*percent)).toFixed(),
+          (fromG-(gDelta*percent)).toFixed(),
+          (fromB-(bDelta*percent)).toFixed()
+        ]
+      }
     },
   }
 </script>
