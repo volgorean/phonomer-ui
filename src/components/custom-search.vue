@@ -10,6 +10,8 @@
             </select>
           </div>
 
+          <p class="custom-search-in" v-if="type=='search'">in</p>
+
           <div class="custom-search-preset" v-if="type=='search'">
             <select v-model="preset">
               <option value="english">English</option>
@@ -19,7 +21,10 @@
             </select>
           </div>
 
-          <p class="search-custom-submit" :style="buttonStyle" @click="customGenerator" v-if="type=='generate'">{{words.length}} / 100 Required</p>
+          <p class="search-custom-submit" :style="buttonStyle" @click="customGenerator" v-if="type=='generate'">
+            <template v-if="this.words.length > 100"> Submit {{words.length}} Words</template>
+            <template v-else>{{words.length}} / 100 Required</template>
+          </p>
           <p class="search-custom-submit" @click="customSearch" v-else>Submit</p>
 	    	</div>
 	    </div>
@@ -71,8 +76,15 @@
       select {
         width: 100%;
         border: none;
-        background: transparent;
+        padding: 6px 15px;
+        // padding-left: 15px;
+        border-radius: 3px;
+        background: rgb(236, 240, 241);
         white-space: nowrap;
+        cursor: pointer;
+        
+        -webkit-appearance: none;
+        -moz-appearance: none;
       }
 
       .custom-search-type {
@@ -80,16 +92,19 @@
 
         select {
           // padding: 6px 0;
-          font: 500 24px/28px 'Hind Vadodara', sans-serif;
+          font: 500 20px/28px 'Hind Vadodara', sans-serif;
         }
       }
       .custom-search-preset {
         flex: 0 0 auto;
         
         select {
-          padding-left: 20px;
-          font: 500 24px/28px 'Hind Vadodara', sans-serif;
+          font: 500 20px/28px 'Hind Vadodara', sans-serif;
         }
+      }
+      .custom-search-in {
+        padding: 6px 15px;
+        font: 500 16px/28px 'Hind Vadodara', sans-serif;
       }
 	    .search-custom-submit {
 	      flex: 0 0;
@@ -98,7 +113,7 @@
 	      border-radius: 3px;
 	      font: 500 16px/28px 'Hind Vadodara', sans-serif;
 	      white-space: nowrap;
-	      background: lightgray;
+	      background: rgb(236, 240, 241);
 	      cursor: pointer;
 
 	      &.valid {
