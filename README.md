@@ -1,6 +1,6 @@
-# markov-ui
+# Phonomer.com UI
 
-> markov domain generation front-end
+> markov based domain generation front-end
 
 ## Build Setup
 
